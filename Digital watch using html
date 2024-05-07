@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Watch</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #watch {
+            border: 2px solid #3498db;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #2980b9;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #time {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 3rem;
+            color: #ecf0f1;
+            letter-spacing: 3px;
+        }
+
+        #date {
+            font-size: 1.2rem;
+            color: #ecf0f1;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="watch">
+        <div id="time">00:00:00</div>
+        <div id="date">January 1, 2023</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById("time").textContent = timeString;
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+            document.getElementById("date").textContent = dateString;
+        }
+
+        
+        setInterval(updateClock, 1000);
+
+        
+        updateClock();
+    </script>
+</body>
+</html>
