@@ -25,7 +25,7 @@ public:
         int previous_max = min_num;
         
         for (int i = 0; i < bucket_count; i++) {
-            if (min_bucket[i] == INT_MAX) continue;  // Empty bucket
+            if (min_bucket[i] == INT_MAX) continue;  
             max_gap = max(max_gap, min_bucket[i] - previous_max);
             previous_max = max_bucket[i];
         }
